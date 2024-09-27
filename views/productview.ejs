@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Knot Ring</title>
+    <title><%= item.item %></title>
     <link rel="stylesheet" href="/stylesheets/productview.css">
 </head>
 <body>
@@ -41,16 +41,16 @@
     </header>
     <main>
         <div class="container">
-            <div class="breadcrumb">
+            <!-- <div class="breadcrumb">
                 <a href="#">Home</a> > <a href="#">Rings</a> > Love Knot Ring
-            </div>
+            </div> -->
             <div class="product">
                 <div class="product-image">
                     <img src= <%= item.img %> alt="Love Knot Ring">
                 </div>
                 <div class="product-info">
                     <h1><%= item.item %></h1>
-                    <p>The Tiffany Knot collection features contemporary balancing of sophistication for the modern couple. This unique piece showcases a magnificent satin finish.</p>
+                    <!-- <p>The Tiffany Knot collection features contemporary balancing of sophistication for the modern couple. This unique piece showcases a magnificent satin finish.</p> -->
                     <p class="price"> Rs. <%= item.price %></p>
                     <button class="add-to-cart">Add to Cart</button>
                     <div class="product-details">
@@ -64,7 +64,7 @@
     </main>
     <footer>
         <div class="container">
-            <p>&copy; 2023 Jewelry Company</p>
+            <p>&copy; Sample store</p>
         </div>
     </footer>
 </body>
