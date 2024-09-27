@@ -73,7 +73,8 @@ app.post('/admin',async function(req,res){
     const {username, email, password, age , secretcode } = req.body;
     const hashPassword = null;
     const check = await adminModel.findOne({email});
-    if (check != '' || secretcode != 'admin123'){
+    console.log(check);
+    if (check != null || secretcode != 'admin123'){
         res.render('wrong');
     }
     else{
