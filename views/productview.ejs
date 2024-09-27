@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Knot Ring</title>
+    <link rel="stylesheet" href="/stylesheets/productview.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="#">
+                    <img src="https://cdn-icons-png.flaticon.com/512/9908/9908191.png" alt="Jewelry Company Logo">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">New</a></li>
+                    <li><a href="#">Rings</a></li>
+                    <li><a href="#">Necklaces</a></li>
+                    <li><a href="#">Earrings</a></li>
+                    <li><a href="#">Collections</a></li>
+                    <li><a href="#">Gifts</a></li>
+                    <li><a href="#">Collections</a></li>
+                    <li><a href="#">Jewelry</a></li>
+                </ul>
+            </nav>
+            <div class="actions">
+                <a href="#" class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </a>
+                <a href="#" class="login-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </a>
+                <a href="#" class="cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="#">Home</a> > <a href="#">Rings</a> > Love Knot Ring
+            </div>
+            <div class="product">
+                <div class="product-image">
+                    <img src= <%= item.img %> alt="Love Knot Ring">
+                </div>
+                <div class="product-info">
+                    <h1><%= item.item %></h1>
+                    <p>The Tiffany Knot collection features contemporary balancing of sophistication for the modern couple. This unique piece showcases a magnificent satin finish.</p>
+                    <p class="price"> Rs. <%= item.price %></p>
+                    <button class="add-to-cart">Add to Cart</button>
+                    <div class="product-details">
+                        <p><%= item.description %></p>
+                        <!--<p>Categories: <a href="#">Diamond Rings</a></p>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="relative h-full w-full overflow-hidden rounded-md aspect-auto bg-transparent transition-[background] ease-curve-d duration-normal"><img alt="GPT-4 Line Motif" loading="lazy" width="1240" height="310" decoding="async" data-nimg="1" class="mx-auto" style="color:transparent" sizes="(min-width: 1728px) 1728px, 100vw" srcset="https://images.ctfassets.net/kftzwdyauwt9/b11fba8c-c51f-41c1-e8cd631b6ad8/b8f7e710414712b37d294e01d347cb46/gpt-4-motif.svg?w=640&amp;q=90 640w, https://images.ctfassets.net/kftzwdyauwt9/b11fba8c-c51f-41c1-e8cd631b6ad8/b8f7e710414712b37d294e01d347cb46/gpt-4-motif.svg?w=750&amp;q=90 750w, https://images.ctfassets.net/kftzwdyauwt9/b11fba8c-c51f-41c1-e8cd631b6ad8/b8f7e710414712b37d294e01d347cb46/gpt-4-motif.svg?w=828&amp;q=90 828w, https://images.ctfassets.net/kftzwdyauwt9/b11fba8c-c51f-41c1-e8cd631b6ad8/b8f7e710414712b37d294e01d347cb46/gpt-4-motif.svg?w=1080&amp;q=90 1080w, https://images.ctfassets.net/kftzwdyauwt9/b11fba8c-c51f-41c1-e8cd631b6ad8/b8f7e710414712b37d294e01d347cb46/gpt-4-motif.svg?w=1200&amp;q=90 1200w, https://images.ctfassets.net/kftzwdyauwt9/b11fba8c-c51f-41c1-e8cd631b6ad8/b8f7e710414712b37d294e01d347cb46/gpt-4-motif.svg?w=1920&amp;q=90 1920w, https://images.ctfassets.net/kftzwdyauwt9/b11fba8c-c51f-41c1-e8cd631b6ad8/b8f7e710414712b37d294e01d347cb46/gpt-4-motif.svg?w=2048&amp;q=90 2048w, https://images.ctfassets.net/kftzwdyauwt9/b11fba8c-c51f-41c1-e8cd631b6ad8/b8f7e710414712b37d294e01d347cb46/gpt-4-motif.svg?w=3840&amp;q=90 3840w" src="https://images.ctfassets.net/kftzwdyauwt9/b11fba8c-c51f-41c1-e8cd631b6ad8/b8f7e710414712b37d294e01d347cb46/gpt-4-motif.svg?w=3840&amp;q=90"></div>-->
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Jewelry Company</p>
+        </div>
+    </footer>
+</body>
+</html>
