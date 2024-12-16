@@ -15,6 +15,9 @@ app.use(express.urlencoded({extended : true}));
 app.get('/',function(req,res){
         res.render('index');
 });
+async function fetchUser(email){
+    return await userModel.findOne({email});
+}
 app.post('/create', async function(req,res){
     const {username, email, password, age } = req.body;
     const _checkUser = await userModel.find({email});
@@ -57,15 +60,21 @@ app.post('/login',async function(req,res){
         else{ 
          const token =  jwt.sign({email},"aquickbrownfoxjumpsoveralazydog");
          res.cookie("token",token)
-         const items = await productModel.find();
-         res.render('showitem',{items})}
+         res.redirect('/showitem');
      
-     });}
+     }})}
 
     else{
         res.render('wrong')
     }
 })
+app.get('/showitem', checkAuth ,async function(req,res){
+         const items = await productModel.find();
+         let user = await req.user;
+         console.log(user);
+         res.render('showitem',{items,user})}
+    
+)
 app.get('/admin',function(req,res){
     res.render('admin')
 })
@@ -122,20 +131,40 @@ app.post('/listitem',async function(req,res){
         })
         res.render('listproduct');
 })
-            app.get('/view/:_id',async function(req,res){
+            app.get('/view/:_id', checkAuth,async function(req,res){
                 const _id = req.params._id;
                 const token = req.cookies.token;
                 const item = await productModel.findOne({_id:_id});
-                console.log(token);
+                const user = req.user;
+                //console.log(token);
                 if (token == ''){
                     res.render('login');
                 }
                 else {
-                    res.render('productview',{item});
+                    res.render('productview',{item , user});
                 }
 
             })
-
+            async function checkAuth(req, res, next) {
+                const token = req.cookies.token;
+                if (!token) {
+                    return res.render('login');
+                }
+                
+                try {
+                    const data = jwt.verify(token, "aquickbrownfoxjumpsoveralazydog");
+                    if (data) {
+                        const user = await fetchUser(data.email);  // Ensure we wait for the result
+                        req.user = user;
+                        next();  // Call next() after setting req.user
+                    } else {
+                        res.render('login');
+                    }
+                } catch (err) {
+                    res.render('login');
+                }
+            }
+            
 
 
 
@@ -143,3 +172,4 @@ app.post('/listitem',async function(req,res){
 app.listen(3030,(err)=>{
         console.log('server started');
 })
+
