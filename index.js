@@ -3,6 +3,8 @@ const app = express();
 const path = require('path');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+dotenv.config();
 const cookieParser = require('cookie-parser');
 const userModel = require('./models/user');
 const adminModel = require('./models/admin');
