@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser');
 const userModel = require('./models/user');
 const adminModel = require('./models/admin');
 const productModel = require('./models/product');
+const product = require('./models/product');
 app.use(express.static(path.join(__dirname,'public')));
 app.set('view engine','ejs');
 app.use(cookieParser());
@@ -123,6 +124,10 @@ app.post('/adminlogin',async function(req,res){
     });
 }
 })
+app.get('/listproduct',checkAuth,function(req,res)
+{
+    res.render('listproduct');
+})
 app.post('/listitem',async function(req,res){
         const {item , img , price , description} = req.body;
         const product = await productModel.create({
@@ -133,7 +138,7 @@ app.post('/listitem',async function(req,res){
         })
         res.render('listproduct');
 })
-            app.get('/view/:_id', checkAuth,async function(req,res){
+app.get('/view/:_id', checkAuth,async function(req,res){
                 const _id = req.params._id;
                 const token = req.cookies.token;
                 const item = await productModel.findOne({_id:_id});
@@ -166,8 +171,40 @@ app.post('/listitem',async function(req,res){
                     res.render('login');
                 }
             }
-            
+            app.get('/delete',checkAuth,async function(req,res){
+                    const user = await req.user;
+                    const item = await productModel.find();
+                    res.render('delete',{item,user});
+            })
+            //delete item code here.
+app.post('/delete', checkAuth, async function(req,res){
+                const _id = req.body._id;
+                const token = req.cookies.token;
+                const user = req.user ;
+                if (token == ''){
+                    res.render('login');
+                }
+                else {
+                    try{
+                        const data = jwt.verify(token, "aquickbrownfoxjumpsoveralazydog");
+                        if(data){
+                                let item = await productModel.findOneAndDelete({_id:_id});
+                                console.log(item , "deleted")
+                                item = await productModel.find();
+                                res.render('delete',{item , user});
+                        }
+                        else{
+                            res.render('login');
+                        }
 
+                    }
+                    catch(err){
+                        res.render('login');
+                        console.log(err);
+                    }
+                }
+
+        })
 
 
 
