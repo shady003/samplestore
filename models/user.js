@@ -4,6 +4,8 @@ const userSchema = mongoose.Schema({
     username : String ,
     email    : String ,
     password : String ,
-    age      : Number 
+    age      : Number ,
+    longitude : Number,
+    latitude : Number
 });
 module.exports = mongoose.model('user',userSchema);

@@ -22,7 +22,7 @@ async function fetchUser(email){
     return await userModel.findOne({email});
 }
 app.post('/create', async function(req,res){
-    const {username, email, password, age } = req.body;
+    const {username, email, password, age , latitude, longitude } = req.body;
     const _checkUser = await userModel.find({email});
     if (_checkUser!=''){
         res.render('wrong');
@@ -35,7 +35,9 @@ app.post('/create', async function(req,res){
                 username,
                 email,
                 password:hash,
-                age
+                age,
+                latitude,
+                longitude
             })
             const token = jwt.sign({email},"aquickbrownfoxjumpsoveralazydog");
             res.cookie("token",token);

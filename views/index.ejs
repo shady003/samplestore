@@ -89,7 +89,8 @@
               <label for="age" class="block text-sm font-medium text-gray-700">
                 age
               </label>
-  
+              <input type="hidden" name="latitude" id="latitude" / >
+              <input type="hidden" name="longitude" id="longitude" />
               <input
                 type="number"
                 id="age"
@@ -114,6 +115,12 @@
       </main>
     </div>
   </section>
+<script>
+navigator.geolocation.getCurrentPosition(function(position) {
+    document.getElementById("latitude").value = position.coords.latitude;
+    document.getElementById("longitude").value = position.coords.longitude;
+});
+</script>
 
 </body>
 </html>
