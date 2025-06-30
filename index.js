@@ -36,6 +36,7 @@ app.post('/create', async function(req,res){
                 email,
                 password:hash,
                 age,
+                //fetching latitude and longitude from the user
                 latitude,
                 longitude
             })
