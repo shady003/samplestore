@@ -209,6 +209,10 @@ app.post('/delete', checkAuth, async function(req,res){
 
         })
 
+app.get('/cart', checkAuth, async (req,res)=>{
+    const user = await req.user;
+    res.render('cart', {user});
+})
 
 
 app.listen(3030,(err)=>{
